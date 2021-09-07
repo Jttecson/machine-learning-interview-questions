@@ -29,9 +29,9 @@
 23. Why is squared of L2 norm preferred in ML than just L2 norm?
 - Don't have to calculate square root, which is computationally expensive. Derivative is easier to calculate for stuff like gradient descent. Can calculate sum of squares by just x^Tx which has many optimizations.
 25. When L1 norm is preferred over L2 norm?
-
+- Lasso will shrink coefficients to zero, removing that feature. Good for feature selection if we have a large feature space. L2 will not since the cost term becomes so small.
 27. Can the number of nonzero elements in a vector be defined as L0 norm? If no, why?
-- Should be zero at origin.
+- Doesn't associate with scalar multiplication.
 29. What is Frobenius norm?
 30. What is a diagonal matrix? (D_i,j = 0 for i != j)
 31. Why is multiplication by diagonal matrix computationally cheap? How is the multiplication different for square vs. non-square diagonal matrix?
@@ -44,24 +44,31 @@
 38. When are two vectors x and y orthonormal? (x.T * y = 0 and both have unit norm)
 39. What is an orthogonal matrix? Why is computationally preferred? (a square matrix whose rows are mutually orthonormal and columns are mutually orthonormal.)
 40. What is eigendecomposition, eigenvectors and eigenvalues?
-41. How to find eigen values of a matrix?
-42. Write the eigendecomposition formula for a matrix. If the matrix is real symmetric, how will this change?
-43. Is the eigendecomposition guaranteed to be unique? If not, then how do we represent it?
-44. What are positive definite, negative definite, positive semi definite and negative semi definite matrices?
-45. What is SVD? Why do we use it? Why not just use ED?
-46. Given a matrix A, how will you calculate its SVD?
-47. What are singular values, left singulars and right singulars?
-48. What is the connection of SVD of A with functions of A?
-49. Why are singular values always non-negative?
-50. What is the Moore Penrose pseudo inverse and how to calculate it?
-51. If we do Moore Penrose pseudo inverse on Ax = b, what solution is provided is A is fat? Moreover, what solution is provided if A is tall?
-52. Which matrices can be decomposed by ED? (Any NxN square matrix with N linearly independent eigenvectors)
-53. Which matrices can be decomposed by SVD? (Any matrix; V is either conjugate transpose or normal transpose depending on whether A is complex or real)
-54. What is the trace of a matrix?
-55. How to write Frobenius norm of a matrix A in terms of trace?
-56. Why is trace of a multiplication of matrices invariant to cyclic permutations?
-57. What is the trace of a scalar?
-58. Write the frobenius norm of a matrix in terms of trace?
+- AKA Spectral Decomposition. Breaking down matrix into A, U (eigenvector matrix) and Y (eigenvalue diag matrix). Then AU=YU, A=U^{-1}YU. Matrix exponentiation is vastly simplified. Goes from log2(p) matrix multiplications to constant 2 matrix multiplications, for A^p.
+42. How to find eigen values of a matrix?
+- Solve Ax=yx => (A-yI)x = 0.
+44. Write the eigendecomposition formula for a matrix. If the matrix is real symmetric, how will this change?
+- For a real symmetric matrix, the eigenvectors can be found to be orthogonal.
+45. Is the eigendecomposition guaranteed to be unique? If not, then how do we represent it?
+- No, we eigenvalues can be the same. By convention, order eigenvalues in Y in descending order.
+47. What are positive definite, negative definite, positive semi definite and negative semi definite matrices?
+- Positive definite - all positive eigenvalues. Negative - all negative. semi - can be zero.
+- If A is positive definite, then x^TAx >= 0 for all x.
+49. What is SVD? Why do we use it? Why not just use ED?
+- SVD is a form of data reduction, taylored to the specific problem/data of interest. Takes some data matrix X, represents X=UEV^T. U, V are unitary square, sigma E is diagonal rectangular nxm (singular values), and ordered in decreasing order. U contains info about the column space of X, V the row space. Ordered by significance using singular values sigma_1, .. etc.
+51. Given a matrix A, how will you calculate its SVD?
+52. What are singular values, left singulars and right singulars?
+53. What is the connection of SVD of A with functions of A?
+54. Why are singular values always non-negative?
+55. What is the Moore Penrose pseudo inverse and how to calculate it?
+56. If we do Moore Penrose pseudo inverse on Ax = b, what solution is provided is A is fat? Moreover, what solution is provided if A is tall?
+57. Which matrices can be decomposed by ED? (Any NxN square matrix with N linearly independent eigenvectors)
+58. Which matrices can be decomposed by SVD? (Any matrix; V is either conjugate transpose or normal transpose depending on whether A is complex or real)
+59. What is the trace of a matrix?
+60. How to write Frobenius norm of a matrix A in terms of trace?
+61. Why is trace of a multiplication of matrices invariant to cyclic permutations?
+62. What is the trace of a scalar?
+63. Write the frobenius norm of a matrix in terms of trace?
 
 ## Numerical Optimization
 1. What is underflow and overflow? 
