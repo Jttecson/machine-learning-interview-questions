@@ -19,7 +19,7 @@
 13. What is Ax = b? When does Ax =b has a unique solution? 
 - Ax = b is a matrix equation. Matrix times vector = vector. Usually in this notation we have A, b and we want to find x. It has a unique solution when A iff every column is a pivot column - columns are lin. independent. rank(A)=n.
 15. In Ax = b, what happens when A is fat or tall?
-- If A is not square, then it has either zero or infinite solutions. If tall, dim(span(column space)) is likely less than m, the dimensions of vector b. So likely no solution. If fat, then column space more likely spans R^m, thus more likely to be infinite solutions.
+- If tall, dim(span(column space)) is likely less than m, the dimensions of vector b. So likely no solution for any given x, but it may for some x. If fat, then column space more likely spans R^m, thus more likely to be infinite solutions.
 17. When does inverse of A exist?
 - A is square and nonzero determinant. Equivalently linearly independent columns or rows. rank(A) = n
 19. What is a norm? What is L1, L2 and L infinity norm?
